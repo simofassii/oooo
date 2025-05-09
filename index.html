@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketPrank - Biglietti Evento Billie Eilish</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .navbar {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .hero {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .ticket-form {
+            display: inline-block;
+            text-align: left;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .ticket-form label, .ticket-form select, .ticket-form button {
+            margin-bottom: 15px;
+            display: block;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #reveal {
+            display: none;
+            text-align: center;
+            margin-top: 50px;
+            color: red;
+            font-size: 1.5em;
+        }
+
+        #loader {
+            display: none;
+            margin: 20px auto;
+            border: 6px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 6px solid #007bff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        TicketPrank
+    </div>
+
+    <div class="hero">
+        <h2>Billie Eilish - Hit Me Hard and Soft - The Tour</h2>
+        <p>Unipol Arena - 8 Giugno 2025 - Casalecchio di Reno (BO)</p>
+    </div>
+
+    <div class="content">
+        <h3>Seleziona i tuoi biglietti</h3>
+        <form class="ticket-form">
+            <label for="numTickets">Numero di biglietti:</label>
+            <select id="numTickets">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <br>
+            <label for="section">Seleziona settore:</label>
+            <select id="section">
+                <option value="Parterre">Parterre - €100</option>
+                <option value="Tribuna">Tribuna - €80</option>
+                <option value="Galleria">Galleria - €60</option>
+            </select>
+            <br>
+            <button type="submit">Acquista ora</button>
+            <div id="loader"></div>
+        </form>
+    </div>
+
+    <div id="reveal">
+        <h2>Scherzo! Sei su TicketPrank :)</h2>
+        <p>Ti ha fatto uno scherzo un tuo amico. Non ci sono biglietti qui!</p>
+    </div>
+
+    <script>
+        const form = document.querySelector('.ticket-form');
+        const loader = document.getElementById('loader');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            loader.style.display = 'block';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                document.getElementById('reveal').style.display = 'block';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
